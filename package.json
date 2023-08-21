@@ -1,0 +1,32 @@
+{
+  "name": "vue-forms",
+  "version": "1.0.0",
+  "description": "Form components package for Vue.js",
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ll-kuma-ll/vue-forms.git"
+  },
+  "keywords": [
+    "Vue.js",
+    "Form"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ll-kuma-ll/vue-forms/issues"
+  },
+  "homepage": "https://github.com/ll-kuma-ll/vue-forms#readme",
+  "devDependencies": {
+    "@testing-library/vue": "^7.0.0",
+    "@vitejs/plugin-vue": "^4.3.1",
+    "happy-dom": "^10.10.4",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.2",
+    "vue": "^3.3.4"
+  }
+}
