@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 import * as index from "./"
 import * as forms from "./Forms"
+import * as panels from "./Panels"
 import * as slots from "./Slots"
 
 describe("Forms", () => {
@@ -9,8 +10,14 @@ describe("Forms", () => {
     })
 })
 
+describe("Panels", () => {
+    it("PanelInputText", () => {
+        expect(index.PanelInputText).toEqual(panels.PanelInputText)
+    })
+})
+
 describe("Slots", () => {
-    it("SlotForm", () => {
-        expect(index.SlotForm).toEqual(slots.SlotForm)
+    it("SlotLayoutForm", () => {
+        expect(index.SlotLayoutForm).toEqual(slots.SlotLayoutForm)
     })
 })

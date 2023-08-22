@@ -1,7 +1,7 @@
 import { expect, it } from "vitest"
 import * as index from "../"
-import SlotFormVue from "../SlotForm.vue"
+import SlotLayoutFormVue from "../SlotLayoutForm.vue"
 
 it("SlotForm", () => {
-    expect(index.SlotForm).toEqual(SlotFormVue)
+    expect(index.SlotLayoutForm).toEqual(SlotLayoutFormVue)
 })

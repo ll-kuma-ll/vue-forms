@@ -1,1 +1,1 @@
-export { default as SlotForm } from "./SlotForm.vue"
+export { default as SlotLayoutForm } from "./SlotLayoutForm.vue"
