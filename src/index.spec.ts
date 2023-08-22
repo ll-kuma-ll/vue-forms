@@ -8,6 +8,10 @@ describe("Forms", () => {
     it("FormInputText", () => {
         expect(index.FormInputText).toEqual(forms.FormInputText)
     })
+
+    it("FormTextarea", () => {
+        expect(index.FormTextarea).toEqual(forms.FormTextarea)
+    })
 })
 
 describe("Panels", () => {
