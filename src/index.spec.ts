@@ -17,6 +17,10 @@ describe("Panels", () => {
 })
 
 describe("Slots", () => {
+    it("SlotInputGroup", () => {
+        expect(index.SlotInputGroup).toEqual(slots.SlotInputGroup)
+    })
+
     it("SlotLayoutForm", () => {
         expect(index.SlotLayoutForm).toEqual(slots.SlotLayoutForm)
     })
