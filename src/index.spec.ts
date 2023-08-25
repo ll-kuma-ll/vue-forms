@@ -18,6 +18,10 @@ describe("Panels", () => {
     it("PanelInputText", () => {
         expect(index.PanelInputText).toEqual(panels.PanelInputText)
     })
+
+    it("PanelTextarea", () => {
+        expect(index.PanelTextarea).toEqual(panels.PanelTextarea)
+    })
 })
 
 describe("Slots", () => {
