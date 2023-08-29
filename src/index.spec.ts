@@ -12,6 +12,10 @@ describe("Forms", () => {
     it("FormTextarea", () => {
         expect(index.FormTextarea).toEqual(forms.FormTextarea)
     })
+
+    it("FormSelectOption", () => {
+        expect(index.FormSelectOption).toEqual(forms.FormSelectOption)
+    })
 })
 
 describe("Panels", () => {
@@ -21,6 +25,10 @@ describe("Panels", () => {
 
     it("PanelTextarea", () => {
         expect(index.PanelTextarea).toEqual(panels.PanelTextarea)
+    })
+
+    it("PanelSelectOption", () => {
+        expect(index.PanelSelectOption).toEqual(panels.PanelSelectOption)
     })
 })
 

@@ -25,6 +25,7 @@ describe('標準レイアウトが表示される', () => {
         const label: HTMLLabelElement = screen.getByTestId(testid.label)
         const required = label.getElementsByClassName(className.required)[0]
 
+        expect(screen.getByTestId(testid.root).className).toBe("")
         expect(label.className).toBe("form-label")
         expect(label.innerHTML).toMatch(slots.label)
         expect(required).toBeFalsy()
@@ -75,6 +76,7 @@ describe("Props 指定レイアウト", () => {
 
     test("水平表示", () => {
         render(SlotFormVue, { slots, props: { horizontal: { label: 3, input: 9 } } })
+        expect(screen.getByTestId(testid.root).className).toBe("row")
         expect(screen.getByTestId(testid.label).className).toBe("col-sm-3 col-form-label")
         expect(screen.getByTestId(testid.input).className).toBe("col-sm-9")
     })

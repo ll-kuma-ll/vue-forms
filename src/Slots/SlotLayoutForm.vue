@@ -16,6 +16,9 @@ const props = withDefaults(defineProps<Props>(), {
     required: false,
 })
 
+/** レイアウトクラス属性 */
+const attrClassLayout = computed(() => !!props.horizontal ? ['row'] : [])
+
 /** ラベルクラス属性値 */
 const attrClassLabel = computed(() => !!props.horizontal
     ? [`col-sm-${props.horizontal.label}`, 'col-form-label']
@@ -30,7 +33,7 @@ const attrClassInput = computed(() => !!props.horizontal
 </script>
 
 <template>
-    <div data-testid="slot-form">
+    <div :class="attrClassLayout" data-testid="slot-form">
         <label :class="attrClassLabel" data-testid="slot-form-label">
             <slot name="label"></slot>
             <small v-if="required" class="form-mark-required">*</small>
