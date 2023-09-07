@@ -7,11 +7,6 @@ const choices = [
     { value: "a100", label: "A 100" },
     { value: "b200", label: "B 200" },
 ]
-const props = {
-    modelValue: choices[1].value,
-    choices,
-    label: "プルダウン選択",
-}
 const testid = {
     layout: "slot-form",
     label: "slot-form-label",
@@ -25,7 +20,13 @@ const attrClass = {
 
 afterEach(cleanup)
 
-describe("標準", () => {
+describe("標準(単一選択)", () => {
+    const props = {
+        modelValue: choices[1].value,
+        choices,
+        label: "プルダウン選択",
+    }
+
     it("レイアウト", () => {
         render(PanelSelectOptionVue, { props })
         expect(screen.getByTestId(testid.layout).className).toBe("")
@@ -40,6 +41,7 @@ describe("標準", () => {
 
         expect(select).toBeTruthy()
         expect(select.disabled).toBe(false)
+        expect(select.multiple).toBe(false)
 
         expect(opts.length).toBe(choices.length)
         expect(opts[0].value).toBe(choices[0].label)
@@ -105,5 +107,38 @@ describe("標準", () => {
 
         expect(comp.emitted("update:modelValue")).toBeTruthy()
         expect(comp.emitted("update:modelValue")[0]).toEqual([updateValue])
+    })
+})
+
+describe("複数選択", () => {
+    const props = {
+        modelValue: [choices[1].value],
+        choices,
+        label: "複数選択プルダウン",
+    }
+
+    it("入力フォーム表示", () => {
+        render(PanelSelectOptionVue, { props })
+        const select = screen.getByTestId(testid.input).getElementsByTagName("select")[0]
+        const opts = select?.getElementsByTagName("option")
+
+        expect(select).toBeTruthy()
+        expect(select.disabled).toBe(false)
+        expect(select.multiple).toBe(true)
+
+        expect(opts.length).toBe(choices.length)
+        expect(opts[0].value).toBe(choices[0].label)
+        expect(opts[0].textContent).toBe(choices[0].label)
+        expect(opts[1].value).toBe(choices[1].value)
+        expect(opts[1].textContent).toBe(choices[1].label)
+    })
+
+    it("Event > update:modelValue", async () => {
+        const comp = render(PanelSelectOptionVue, { props })
+        const updateValue = [choices[1].value, choices[2].value]
+        await fireEvent.update(screen.getByTestId(testid.input).getElementsByTagName("option")[2])
+
+        expect(comp.emitted("update:modelValue")).toBeTruthy()
+        expect(comp.emitted("update:modelValue")[0]).toEqual([expect.arrayContaining(updateValue)])
     })
 })

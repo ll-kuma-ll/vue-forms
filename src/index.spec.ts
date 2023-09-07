@@ -23,6 +23,10 @@ describe("Forms", () => {
 })
 
 describe("Panels", () => {
+    it("PanelInputCheck", () => {
+        expect(index.PanelInputCheck).toEqual(panels.PanelInputCheck)
+    })
+
     it("PanelInputText", () => {
         expect(index.PanelInputText).toEqual(panels.PanelInputText)
     })
