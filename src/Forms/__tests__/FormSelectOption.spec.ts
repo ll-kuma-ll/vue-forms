@@ -41,6 +41,30 @@ describe("単一選択", () => {
         expect(screen.getByTestId(testid).className).toBe("form-control is-invalid")
     })
 
+    it("Props > readonly", () => {
+        render(FormSelectOptionVue, { props: { ...props, readonly: true } })
+        const input = screen.getByTestId(testid) as HTMLSelectElement
+
+        expect(input.className).toBe("form-control")
+        expect(input.getAttribute("aria-readonly")).toBe("true")
+    })
+    
+    it("Props > plaintext", () => {
+        render(FormSelectOptionVue, { props: { ...props, plaintext: true } })
+        const input = screen.getByTestId(testid) as HTMLSelectElement
+
+        expect(input.className).toBe("form-control")
+    })
+    
+    it("Props > readonly & plaintext", () => {
+        render(FormSelectOptionVue, { props: { ...props, readonly: true, plaintext: true } })
+        const input = screen.getByTestId("form-input-text") as HTMLTextAreaElement
+
+        expect(input.className).toBe("form-control-plaintext")
+        expect(input.readOnly).toBe(true)
+        expect(input.value).toBe(choices[1].label)
+    })
+    
     it("Event > update:modelValue", async () => {
         const comp = render(FormSelectOptionVue, { props })
         const updateValue = choices[0].value
@@ -80,6 +104,29 @@ describe("複数選択", () => {
     it("Props > invalid", () => {
         render(FormSelectOptionVue, { props: { ...props, invalid: "エラー" } })
         expect(screen.getByTestId(testid).className).toBe("form-control is-invalid")
+    })
+
+    it("Props > readonly", () => {
+        render(FormSelectOptionVue, { props: { ...props, readonly: true } })
+        const input = screen.getByTestId(testid) as HTMLSelectElement
+
+        expect(input.className).toBe("form-control")
+        expect(input.getAttribute("aria-readonly")).toBe("true")
+    })
+    
+    it("Props > plaintext", () => {
+        render(FormSelectOptionVue, { props: { ...props, plaintext: true } })
+        const input = screen.getByTestId(testid) as HTMLSelectElement
+
+        expect(input.className).toBe("form-control")
+    })
+    
+    it("Props > readonly & plaintext", () => {
+        render(FormSelectOptionVue, { props: { ...props, readonly: true, plaintext: true } })
+        const list = screen.getByTestId("readonly-list").getElementsByTagName("li")
+
+        expect(list.length).toBe(props.modelValue.length)
+        expect(list[0].textContent).toBe(choices[1].label)
     })
 
     it("Event > update:modelValue", async () => {

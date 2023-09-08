@@ -18,6 +18,8 @@ interface Props {
     invalid?: string
     text?: string
     horizontal?: { label: number, input: number }
+    readonly?: boolean
+    plaintext?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     required: false,
@@ -39,6 +41,13 @@ const value = computed({
 <template>
     <SlotLayoutForm :required="required" :invalid="invalid" :text="text" :horizontal="horizontal">
         <template #label>{{ label }}</template>
-        <FormSelectOption v-model="value" :choices="choices" :disabled="disabled" :invalid="invalid "/>
+        <FormSelectOption
+            v-model="value"
+            :choices="choices"
+            :disabled="disabled"
+            :invalid="invalid"
+            :readonly="readonly"
+            :plaintext="plaintext"
+        />
     </SlotLayoutForm>
 </template>

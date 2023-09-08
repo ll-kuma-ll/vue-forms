@@ -73,6 +73,30 @@ describe("radio", () => {
         expect(radios[2].className).toBe("form-check")
     })
 
+    it("Props > readonly", () => {
+        render(FormInputCheckVue, { props: { ...props, readonly: true } })
+        const inputs = screen.getAllByTestId(testid)
+
+        expect(inputs[0].className).toBe("form-check form-check-inline")
+        //expect((inputs[0] as HTMLInputElement).readOnly).toBe(true)
+    })
+    
+    it("Props > plaintext", () => {
+        render(FormInputCheckVue, { props: { ...props, plaintext: true } })
+        const inputs = screen.getAllByTestId(testid)
+
+        expect(inputs[0].className).toBe("form-check form-check-inline")
+    })
+    
+    it("Props > readonly & plaintext", () => {
+        render(FormInputCheckVue, { props: { ...props, readonly: true, plaintext: true } })
+        const input = screen.getByTestId("form-input-text") as HTMLTextAreaElement
+
+        expect(input.className).toBe("form-control-plaintext")
+        expect(input.readOnly).toBe(true)
+        expect(input.value).toBe(choices[1].label)
+    })
+
     it("model-value is null", () => {
         render(FormInputCheckVue, { props: { ...props, modelValue: null } })
         expect(screen.getAllByTestId(testid)[0].getElementsByTagName("input")[0].type).toBe("radio")
@@ -147,6 +171,29 @@ describe("checkbox", () => {
         expect(checkboxs[0].className).toBe("form-check")
         expect(checkboxs[1].className).toBe("form-check")
         expect(checkboxs[2].className).toBe("form-check")
+    })
+
+    it("Props > readonly", () => {
+        render(FormInputCheckVue, { props: { ...props, readonly: true } })
+        const inputs = screen.getAllByTestId(testid)
+
+        expect(inputs[0].className).toBe("form-check form-check-inline")
+        //expect((inputs[0] as HTMLInputElement).readOnly).toBe(true)
+    })
+    
+    it("Props > plaintext", () => {
+        render(FormInputCheckVue, { props: { ...props, plaintext: true } })
+        const inputs = screen.getAllByTestId(testid)
+
+        expect(inputs[0].className).toBe("form-check form-check-inline")
+    })
+    
+    it("Props > readonly & plaintext", () => {
+        render(FormInputCheckVue, { props: { ...props, readonly: true, plaintext: true } })
+        const list = screen.getByTestId("readonly-list").getElementsByTagName("li")
+
+        expect(list.length).toBe(props.modelValue.length)
+        expect(list[0].textContent).toBe(choices[1].label)
     })
 
     it("model-value is empty", () => {

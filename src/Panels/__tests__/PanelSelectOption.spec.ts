@@ -100,6 +100,24 @@ describe("標準(単一選択)", () => {
         expect(screen.getByTestId(testid.input).className).toBe("col-sm-10")
     })
 
+    it("Props > readonly", () => {
+        render(PanelSelectOptionVue, { props: { ...props, readonly: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("select")[0].getAttribute("aria-readonly")).toBe("true")
+    })
+
+    it("Props > plaintext", () => {
+        render(PanelSelectOptionVue, { props: { ...props, plaintext: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("select")[0].className).toBe('form-control')
+    })
+
+    it("Props > readony & plaintext", () => {
+        render(PanelSelectOptionVue, { props: { ...props, plaintext: true, readonly: true } })
+        const input = screen.getByTestId(testid.input).getElementsByTagName("input")[0]
+
+        expect(input.className).toBe('form-control-plaintext')
+        expect(input.readOnly).toBe(true)
+    })
+
     it("Event > update:modelValue", async () => {
         const comp = render(PanelSelectOptionVue, { props })
         const updateValue = choices[2].value
@@ -131,6 +149,24 @@ describe("複数選択", () => {
         expect(opts[0].textContent).toBe(choices[0].label)
         expect(opts[1].value).toBe(choices[1].value)
         expect(opts[1].textContent).toBe(choices[1].label)
+    })
+
+    it("Props > readonly", () => {
+        render(PanelSelectOptionVue, { props: { ...props, readonly: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("select")[0].getAttribute("aria-readonly")).toBe("true")
+    })
+
+    it("Props > plaintext", () => {
+        render(PanelSelectOptionVue, { props: { ...props, plaintext: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("select")[0].className).toBe('form-control')
+    })
+
+    it("Props > readony & plaintext", () => {
+        render(PanelSelectOptionVue, { props: { ...props, plaintext: true, readonly: true } })
+        const list = screen.getByTestId("readonly-list").getElementsByTagName("li")
+
+        expect(list.length).toBe(props.modelValue.length)
+        expect(list[0].textContent).toBe(choices[1].label)
     })
 
     it("Event > update:modelValue", async () => {

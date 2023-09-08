@@ -20,6 +20,10 @@ describe("Forms", () => {
     it("FormSelectOption", () => {
         expect(index.FormSelectOption).toEqual(forms.FormSelectOption)
     })
+
+    it("ReadonlyList", () => {
+        expect(index.ReadonlyList).toEqual(forms.ReadonlyList)
+    })
 })
 
 describe("Panels", () => {

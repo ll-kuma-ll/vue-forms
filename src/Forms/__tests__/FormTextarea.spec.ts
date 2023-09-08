@@ -40,6 +40,29 @@ it("Props > invalid", () => {
     expect(textarea.className).toBe("form-control is-invalid")
 })
 
+it("Props > readonly", () => {
+    render(FormTextareaVue, { props: { ...props, readonly: true } })
+    const input = screen.getByTestId(testid) as HTMLTextAreaElement
+
+    expect(input.className).toBe("form-control")
+    expect(input.readOnly).toBe(true)
+})
+
+it("Props > plaintext", () => {
+    render(FormTextareaVue, { props: { ...props, plaintext: true } })
+    const input = screen.getByTestId(testid) as HTMLTextAreaElement
+
+    expect(input.className).toBe("form-control")
+})
+
+it("Props > readonly & plaintext", () => {
+    render(FormTextareaVue, { props: { ...props, readonly: true, plaintext: true } })
+    const input = screen.getByTestId(testid) as HTMLTextAreaElement
+
+    expect(input.className).toBe("form-control-plaintext")
+    expect(input.readOnly).toBe(true)
+})
+
 it("Emit > update:modelValue", async () => {
     const comp = render(FormTextareaVue, { props })
     const updateValue = "更新\nユーザ入力"

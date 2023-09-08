@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import ReadonlyList from './ReadonlyList.vue';
 
 /*
  |-----------------------------------------
@@ -11,9 +12,13 @@ interface Props {
     choices: { value: number | string | null, label: string }[]
     disabled?: boolean
     invalid?: string
+    readonly?: boolean
+    plaintext?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
+    readonly: false,
+    plaintext: false,
 })
 const emit = defineEmits<{
     (e: 'update:modelValue', value): void
@@ -39,14 +44,17 @@ const attrClassSelect = computed(() => ({
 
 <template>
     <select
+        v-if="!(readonly && plaintext)"
         v-model="value"
         :multiple="multiple"
         :class="attrClassSelect"
         :disabled="disabled"
+        :aria-readonly="readonly"
         data-testid="form-select"
     >
         <option v-for="(choice, idx) in choices" :key="idx" :value="choice.value">
             {{ choice.label }}
         </option>
     </select>
+    <ReadonlyList v-else :model-value="modelValue" :choices="choices" />
 </template>

@@ -12,10 +12,14 @@ interface Props {
     placeholder?: string
     disabled?: boolean
     invalid?: string
+    readonly?: boolean
+    plaintext?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     type: 'text',
-    disabled: false
+    disabled: false,
+    readonly: false,
+    plaintext: false,
 })
 const emit = defineEmits<{
     (e: 'update:modelValue', value: string | number | null): void
@@ -31,7 +35,9 @@ const value = computed({
 
 /** クラス属性値 */
 const attrClass = computed(() => ({
-    'form-control': true,
+    'form-control': !(props.plaintext && props.readonly),
+    'form-control-plaintext': props.plaintext && props.readonly,
+    'form-control-color': props.type == 'color',
     'is-invalid': typeof props.invalid == 'string' && props.invalid.length > 0,
 }))
 </script>
@@ -43,6 +49,7 @@ const attrClass = computed(() => ({
         :class="attrClass"
         :placeholder="placeholder"
         :disabled="disabled"
+        :readonly="readonly"
         data-testid="form-input-text"
     >
 </template>

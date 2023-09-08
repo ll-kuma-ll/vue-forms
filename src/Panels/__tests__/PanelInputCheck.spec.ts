@@ -115,6 +115,27 @@ describe("radio", () => {
         expect(screen.getByTestId(testid.input).className).toBe("col-sm-10")
     })
 
+    it("Props > readonly", () => {
+        render(PanelInputCheckVue, { props: { ...props, readonly: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].readOnly).toBe(true)
+    })
+
+    it("Props > plaintext", () => {
+        render(PanelInputCheckVue, { props: { ...props, plaintext: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].className).toBe('form-check-input')
+    })
+
+    it("Props > readony & plaintext", () => {
+        render(PanelInputCheckVue, { props: { ...props, plaintext: true, readonly: true } })
+        const inputs = screen.getByTestId(testid.input).getElementsByTagName("input")
+
+        expect(inputs.length).toBe(1)
+        expect(inputs[0].value).toBe(choices[1].label)
+        expect(inputs[0].type).toBe("text")
+        expect(inputs[0].readOnly).toBe(true)
+        expect(inputs[0].className).toBe("form-control-plaintext")
+    })
+
     it("Event > update:modelValue", async () => {
         const { emitted } = render(PanelInputCheckVue, { props })
         await fireEvent.update(screen.getAllByTestId(testid.check)[2].getElementsByTagName("input")[0])
@@ -185,6 +206,24 @@ describe("checkbox", () => {
 
         expect(label.getElementsByClassName(selector.required)[0]).toBeTruthy()
         expect(label.textContent).toBe(`${props.label}*`)
+    })
+
+    it("Props > readonly", () => {
+        render(PanelInputCheckVue, { props: { ...props, readonly: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].readOnly).toBe(true)
+    })
+
+    it("Props > plaintext", () => {
+        render(PanelInputCheckVue, { props: { ...props, plaintext: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].className).toBe('form-check-input')
+    })
+
+    it("Props > readony & plaintext", () => {
+        render(PanelInputCheckVue, { props: { ...props, plaintext: true, readonly: true } })
+        const list = screen.getByTestId("readonly-list").getElementsByTagName("li")
+
+        expect(list.length).toBe(props.modelValue.length)
+        expect(list[0].textContent).toBe(choices[0].label)
     })
 
     it("Event > update:modelValue", async () => {

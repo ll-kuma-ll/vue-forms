@@ -22,6 +22,12 @@ test("INPUTタグが表示される", () => {
 test("Props > type", () => {
     render(FormInputTextVue, { props: { ...props, type: "email" } })
     expect(getElement().type).toBe("email")
+    expect(getElement().className).toBe("form-control")
+})
+
+test("Props > type=color", () => {
+    render(FormInputTextVue, { props: { ...props, type: "color" } })
+    expect(getElement().className).toBe("form-control form-control-color")
 })
 
 test("Props > placeholder", () => {
@@ -38,6 +44,23 @@ test("Props > disabled", () => {
 test("Props > invalid", () => {
     render(FormInputTextVue, { props: { ...props, invalid: "エラー" } })
     expect(getElement().className).toBe("form-control is-invalid")
+})
+
+test("Props > readonly", () => {
+    render(FormInputTextVue, { props: { ...props, readonly: true } })
+    expect(getElement().className).toBe("form-control")
+    expect(getElement().readOnly).toBe(true)
+})
+
+test("Props > plaintext", () => {
+    render(FormInputTextVue, { props: { ...props, plaintext: true } })
+    expect(getElement().className).toBe("form-control")
+})
+
+test("Props > readonly & plaintext", () => {
+    render(FormInputTextVue, { props: { ...props, readonly: true, plaintext: true } })
+    expect(getElement().className).toBe("form-control-plaintext")
+    expect(getElement().readOnly).toBe(true)
 })
 
 test("Emit > update:modelValue", async () => {

@@ -17,6 +17,8 @@ interface Props {
     invalid?: string
     text?: string
     horizontal?: { label: number, input: number }
+    readonly?: boolean
+    plaintext?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
@@ -42,6 +44,8 @@ const value = computed({
             :placeholder="placeholder"
             :disabled="disabled"
             :invalid="invalid"
+            :readonly="readonly"
+            :plaintext="plaintext"
         />
     </SlotLayoutForm>
 </template>

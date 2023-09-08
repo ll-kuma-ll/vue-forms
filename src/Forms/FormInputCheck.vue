@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { v4 as uuid } from 'uuid'
+import ReadonlyList from './ReadonlyList.vue';
 
 /*
  |-------------------------------------------------
@@ -18,10 +19,14 @@ interface Props {
     disabled?: boolean
     invalid?: string
     inline?: boolean
+    readonly?: boolean
+    plaintext?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     inline: true,
+    readonly: false,
+    plaintext: false
 })
 const emit = defineEmits<{
     (e: 'update:modelValue', value): void
@@ -59,8 +64,11 @@ const ids = computed(
 </script>
 
 <template>
-    <div v-for="(choice, idx) in choices" :key="idx" :class="attrClassLayout" data-testid="form-input-check">
-        <input v-model="value" :type="attrType" :value="choice.value" :class="attrClassInput" :disabled="disabled" :id="ids[idx]">
-        <label class="form-check-label" :for="ids[idx]">{{ choice.label }}</label>
-    </div>
+    <template v-if="!(readonly && plaintext)">
+        <div v-for="(choice, idx) in choices" :key="idx" :class="attrClassLayout" data-testid="form-input-check">
+            <input v-model="value" :type="attrType" :value="choice.value" :class="attrClassInput" :disabled="disabled" :readonly="readonly" :id="ids[idx]">
+            <label class="form-check-label" :for="ids[idx]">{{ choice.label }}</label>
+        </div>
+    </template>
+    <ReadonlyList :model-value="modelValue" :choices="choices" :inline="inline" />
 </template>

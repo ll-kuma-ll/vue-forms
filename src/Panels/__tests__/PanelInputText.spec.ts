@@ -105,6 +105,24 @@ describe("Props指定", () => {
         expect(feedback.textContent).toBe("エラー")
     })
 
+    it("読み取り専用", () => {
+        render(PanelInputTextVue, { props: { ...props, readonly: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].readOnly).toBe(true)
+    })
+
+    it("プレーンテキスト表示", () => {
+        render(PanelInputTextVue, { props: { ...props, plaintext: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].className).toBe('form-control')
+    })
+
+    it("読み取り専用・プレーンテキスト表示", () => {
+        render(PanelInputTextVue, { props: { ...props, plaintext: true, readonly: true } })
+        const input = screen.getByTestId(testid.input).getElementsByTagName("input")[0]
+
+        expect(input.className).toBe('form-control-plaintext')
+        expect(input.readOnly).toBe(true)
+    })
+
     it("テキスト", () => {
         render(PanelInputTextVue, { props: { ...props, text: "テキスト" } })
         const text = screen.getByTestId(testid.input).getElementsByClassName(attrClass.text)[0]

@@ -102,4 +102,22 @@ describe("Props指定", () => {
         expect(screen.getByTestId(testid.label).className).toBe("col-sm-2 col-form-label")
         expect(screen.getByTestId(testid.input).className).toBe("col-sm-10")
     })
+
+    it("Props > readonly", () => {
+        render(PanelTextareaVue, { props: { ...props, readonly: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("textarea")[0].readOnly).toBe(true)
+    })
+
+    it("Props > plaintext", () => {
+        render(PanelTextareaVue, { props: { ...props, plaintext: true } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("textarea")[0].className).toBe('form-control')
+    })
+
+    it("Props > readony & plaintext", () => {
+        render(PanelTextareaVue, { props: { ...props, plaintext: true, readonly: true } })
+        const textarea = screen.getByTestId(testid.input).getElementsByTagName("textarea")[0]
+
+        expect(textarea.className).toBe('form-control-plaintext')
+        expect(textarea.readOnly).toBe(true)
+    })
 })
