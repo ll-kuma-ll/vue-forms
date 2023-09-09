@@ -10,6 +10,7 @@ interface Props {
     modelValue: string | null
     placeholder?: string
     disabled?: boolean
+    size?: -1 | 0 | 1
     invalid?: string
     readonly?: boolean
     plaintext?: boolean
@@ -35,6 +36,8 @@ const value = computed({
 const attrClass = computed(() => ({
     'form-control': !(props.plaintext && props.readonly),
     'form-control-plaintext': props.plaintext && props.readonly,
+    'form-control-sm': props.size == -1,
+    'form-control-lg': props.size == 1,
     'is-invalid': typeof props.invalid == 'string' && props.invalid.length > 0,
 }))
 </script>

@@ -11,6 +11,7 @@ interface Props {
     modelValue: string | number | string[] | number[] | null
     choices: { value: number | string | null, label: string }[]
     disabled?: boolean
+    size?: -1 | 0 | 1
     invalid?: string
     readonly?: boolean
     plaintext?: boolean
@@ -38,6 +39,8 @@ const multiple = computed(() => Array.isArray(props.modelValue))
 /** 選択フォームクラス属性値 */
 const attrClassSelect = computed(() => ({
     'form-control': true,
+    'form-control-sm': props.size == -1,
+    'form-control-lg': props.size == 1,
     'is-invalid': !!props.invalid,
 }))
 </script>

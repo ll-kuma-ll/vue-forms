@@ -95,6 +95,16 @@ describe("Props指定", () => {
         expect(formText.disabled).toBe(true)
     })
 
+    it("サイズ小", () => {
+        render(PanelInputTextVue, { props: { ...props, size: -1 } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].className).toBe("form-control form-control-sm")
+    })
+
+    it("サイズ大", () => {
+        render(PanelInputTextVue, { props: { ...props, size: 1 } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("input")[0].className).toBe("form-control form-control-lg")
+    })
+
     it("バリデーションエラー", () => {
         render(PanelInputTextVue, { props: { ...props, invalid: "エラー" } })
         const formText = screen.getByTestId(testid.input).getElementsByTagName("input")[0]

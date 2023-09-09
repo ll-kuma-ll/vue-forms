@@ -14,6 +14,7 @@ interface Props {
         label: string
     }[]
     inline?: boolean
+    size?: -1 | 0 | 1
 }
 const props = withDefaults(defineProps<Props>(), {
     inline: true,
@@ -48,5 +49,5 @@ const attrClassListItem = computed(() => ({
     <ul v-if="isMultiple" :class="attrClassList" data-testid="readonly-list">
         <li v-for="(label, idx) in value" :key="idx" :class="attrClassListItem">{{ label }}</li>
     </ul>
-    <FormInputText v-else :model-value="(value as string)" :readonly="true" :plaintext="true"/>
+    <FormInputText v-else :model-value="(value as string)" :size="size" :readonly="true" :plaintext="true"/>
 </template>

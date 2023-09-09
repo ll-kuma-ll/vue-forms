@@ -75,6 +75,16 @@ describe("標準(単一選択)", () => {
         expect(select.disabled).toBe(true)
     })
 
+    it("Props > size > -1", () => {
+        render(PanelSelectOptionVue, { props: { ...props, size: -1 } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("select")[0].className).toBe("form-control form-control-sm")
+    })
+
+    it("Props > size > 1", () => {
+        render(PanelSelectOptionVue, { props: { ...props, size: 1 } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("select")[0].className).toBe("form-control form-control-lg")
+    })
+
     it("Props > invalid", () => {
         render(PanelSelectOptionVue, { props: { ...props, invalid: 'エラー' } })
         const select = screen.getByTestId(testid.input).getElementsByTagName("select")[0]

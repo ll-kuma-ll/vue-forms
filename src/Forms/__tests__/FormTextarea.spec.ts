@@ -33,6 +33,16 @@ it("Props > disabled", () => {
     expect(textarea.disabled).toBe(true)
 })
 
+it("Prpos > size > -1", () => {
+    render(FormTextareaVue, { props: { ...props, size: -1 } })
+    expect(screen.getByTestId(testid).className).toBe("form-control form-control-sm")
+})
+
+it("Props > size > 1", () => {
+    render(FormTextareaVue, { props: { ...props, size: 1 } })
+    expect(screen.getByTestId(testid).className).toBe("form-control form-control-lg")
+})
+
 it("Props > invalid", () => {
     render(FormTextareaVue, { props: { ...props, invalid: "エラー" } })
     const textarea: HTMLTextAreaElement = screen.getByTestId(testid)

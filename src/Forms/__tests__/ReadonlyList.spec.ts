@@ -29,6 +29,18 @@ it("単一選択", () => {
     expect(screen.queryByTestId(testid.multiple)).toBeFalsy()
 })
 
+it("単一選択 > size", () => {
+    const props = {
+        modelValue: choices[1].value,
+        choices,
+        size: -1,
+    }
+    render(ReadonlyListVue, { props })
+    const input = screen.getByTestId(testid.single) as HTMLInputElement
+
+    expect(input.className).toBe("form-control-plaintext form-control-sm")
+})
+
 it("複数選択", () => {
     const props = {
         modelValue: [choices[0].value, choices[2].value],

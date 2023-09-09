@@ -86,6 +86,16 @@ describe("Props指定", () => {
         expect(screen.getByTestId(testid.input).getElementsByTagName("textarea")[0].disabled).toBe(true)
     })
 
+    it("Props > size > -1", () => {
+        render(PanelTextareaVue, { props: { ...props, size: -1 } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("textarea")[0].className).toBe("form-control form-control-sm")
+    })
+
+    it("Props > size > 1", () => {
+        render(PanelTextareaVue, { props: { ...props, size: 1 } })
+        expect(screen.getByTestId(testid.input).getElementsByTagName("textarea")[0].className).toBe("form-control form-control-lg")
+    })
+
     it("Props > invalid", () => {
         render(PanelTextareaVue, { props: { ...props, invalid: "エラー"}})
         expect(screen.getByTestId(testid.input).getElementsByTagName("textarea")[0].className).toBe("form-control is-invalid")

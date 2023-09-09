@@ -41,6 +41,16 @@ test("Props > disabled", () => {
     expect(getElement().disabled).toBe(true)
 })
 
+test("Props > size > -1", () => {
+    render(FormInputTextVue, { props: { ...props, size: -1 } })
+    expect(getElement().className).toBe("form-control form-control-sm")
+})
+
+test("Props > size > 1", () => {
+    render(FormInputTextVue, { props: { ...props, size: 1 } })
+    expect(getElement().className).toBe("form-control form-control-lg")
+})
+
 test("Props > invalid", () => {
     render(FormInputTextVue, { props: { ...props, invalid: "エラー" } })
     expect(getElement().className).toBe("form-control is-invalid")

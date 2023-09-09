@@ -15,6 +15,7 @@ interface Props {
     label: string
     required?: boolean
     disabled?: boolean
+    size?: -1 | 0 | 1
     invalid?: string
     text?: string
     horizontal?: { label: number, input: number }
@@ -45,6 +46,7 @@ const value = computed({
             v-model="value"
             :choices="choices"
             :disabled="disabled"
+            :size="size"
             :invalid="invalid"
             :readonly="readonly"
             :plaintext="plaintext"

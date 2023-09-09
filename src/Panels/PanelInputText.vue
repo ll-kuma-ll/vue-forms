@@ -14,6 +14,7 @@ interface Props {
     type?: 'color' | 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week'
     placeholder?: string
     disabled?: boolean
+    size?: -1 | 0 | 1
     required?: boolean
     invalid?: string
     text?: string
@@ -43,6 +44,7 @@ const value = computed({
             :type="type"
             :placeholder="placeholder"
             :disabled="disabled"
+            :size="size"
             :invalid="invalid"
             :readonly="readonly"
             :plaintext="plaintext"

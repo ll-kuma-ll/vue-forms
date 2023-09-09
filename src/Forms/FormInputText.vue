@@ -11,6 +11,7 @@ interface Props {
     type?: 'color' | 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week'
     placeholder?: string
     disabled?: boolean
+    size?: -1 | 0 | 1
     invalid?: string
     readonly?: boolean
     plaintext?: boolean
@@ -18,6 +19,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     type: 'text',
     disabled: false,
+    size: 0,
     readonly: false,
     plaintext: false,
 })
@@ -38,6 +40,8 @@ const attrClass = computed(() => ({
     'form-control': !(props.plaintext && props.readonly),
     'form-control-plaintext': props.plaintext && props.readonly,
     'form-control-color': props.type == 'color',
+    'form-control-sm': props.size == -1,
+    'form-control-lg': props.size == 1,
     'is-invalid': typeof props.invalid == 'string' && props.invalid.length > 0,
 }))
 </script>

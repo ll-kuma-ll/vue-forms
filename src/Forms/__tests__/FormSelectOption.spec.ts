@@ -36,6 +36,16 @@ describe("単一選択", () => {
         expect((screen.getByTestId(testid) as HTMLSelectElement).disabled).toBe(true)
     })
 
+    it("Prpos > size > -1", () => {
+        render(FormSelectOptionVue, { props: { ...props, size: -1 } })
+        expect(screen.getByTestId(testid).className).toBe("form-control form-control-sm")
+    })
+    
+    it("Props > size > 1", () => {
+        render(FormSelectOptionVue, { props: { ...props, size: 1 } })
+        expect(screen.getByTestId(testid).className).toBe("form-control form-control-lg")
+    })
+    
     it("Props > invalid", () => {
         render(FormSelectOptionVue, { props: { ...props, invalid: "エラー" } })
         expect(screen.getByTestId(testid).className).toBe("form-control is-invalid")
@@ -101,6 +111,16 @@ describe("複数選択", () => {
         expect((screen.getByTestId(testid) as HTMLSelectElement).disabled).toBe(true)
     })
 
+    it("Prpos > size > -1", () => {
+        render(FormSelectOptionVue, { props: { ...props, size: -1 } })
+        expect(screen.getByTestId(testid).className).toBe("form-control form-control-sm")
+    })
+    
+    it("Props > size > 1", () => {
+        render(FormSelectOptionVue, { props: { ...props, size: 1 } })
+        expect(screen.getByTestId(testid).className).toBe("form-control form-control-lg")
+    })
+    
     it("Props > invalid", () => {
         render(FormSelectOptionVue, { props: { ...props, invalid: "エラー" } })
         expect(screen.getByTestId(testid).className).toBe("form-control is-invalid")
