@@ -45,11 +45,19 @@ describe("Panels", () => {
 })
 
 describe("Slots", () => {
+    it("SlotFloatingLabel", () => {
+        expect(index.SlotFloatingLabel).toEqual(slots.SlotFloatingLabel)
+    })
+
     it("SlotInputGroup", () => {
         expect(index.SlotInputGroup).toEqual(slots.SlotInputGroup)
     })
 
     it("SlotLayoutForm", () => {
         expect(index.SlotLayoutForm).toEqual(slots.SlotLayoutForm)
+    })
+
+    it("SlotPanelInputGroup", () => {
+        expect(index.SlotPanelInputGroup).toEqual(slots.SlotPanelInputGroup)
     })
 })
