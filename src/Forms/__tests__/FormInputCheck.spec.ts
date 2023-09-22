@@ -1,5 +1,4 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue"
-import { afterEach, describe, expect, it } from "vitest"
 import FormInputCheckVue from "../FormInputCheck.vue"
 
 const choices = [
@@ -8,8 +7,6 @@ const choices = [
     { value: "v3", label: "value 3" },
 ]
 const testid = "form-input-check"
-
-afterEach(cleanup)
 
 describe("radio", () => {
     const props = { modelValue: choices[1].value, choices }

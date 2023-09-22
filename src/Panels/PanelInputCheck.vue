@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
     required: false,
 })
 const emit = defineEmits<{
-    (e: 'update:modelValue', value): void
+    (e: 'update:modelValue', value: any): void
 }>()
 
 /** 入力値 */

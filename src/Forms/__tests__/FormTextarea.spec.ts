@@ -1,13 +1,10 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue"
-import { afterEach, expect, it } from "vitest"
 import FormTextareaVue from "../FormTextarea.vue"
 
 const props = {
     modelValue: "複数行\nテキスト",
 }
 const testid = "form-textarea"
-
-afterEach(cleanup)
 
 it("TEXTAREAタグが表示される", () => {
     render(FormTextareaVue, { props })

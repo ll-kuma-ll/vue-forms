@@ -1,4 +1,3 @@
-import { afterEach, describe, expect, it } from "vitest"
 import PanelInputCheckVue from "../PanelInputCheck.vue"
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue"
 
@@ -18,7 +17,6 @@ const selector = {
     text: "form-text",
 }
 
-afterEach(cleanup)
 describe("radio", () => {
     const props = {
         modelValue: choices[1].value,

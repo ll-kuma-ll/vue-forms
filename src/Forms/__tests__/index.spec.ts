@@ -1,4 +1,3 @@
-import { expect, it } from "vitest"
 import * as index from "../"
 import FormInputCheckVue from "../FormInputCheck.vue"
 import FormInputTextVue from "../FormInputText.vue"

@@ -1,5 +1,4 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue";
-import { afterEach, describe, expect, it } from "vitest";
 import PanelTextareaVue from "../PanelTextarea.vue"
 
 const props = {
@@ -15,8 +14,6 @@ const attrClass = {
     invalid: "invalid-feedback",
     text: "form-text",
 }
-
-afterEach(cleanup)
 
 describe("標準", () => {
     it("レイアウト", () => {

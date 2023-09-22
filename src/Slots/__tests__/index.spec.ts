@@ -1,4 +1,3 @@
-import { expect, it } from "vitest"
 import * as index from "../"
 import SlotFloatingLabelVue from "../SlotFloatingLabel.vue"
 import SlotInputGroupVue from "../SlotInputGroup.vue"

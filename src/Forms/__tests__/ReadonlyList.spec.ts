@@ -1,5 +1,4 @@
 import { cleanup, render, screen } from "@testing-library/vue"
-import { afterEach, expect, it } from "vitest"
 import ReadonlyListVue from "../ReadonlyList.vue"
 
 const choices = [
@@ -11,8 +10,6 @@ const testid = {
     single: "form-input-text",
     multiple: "readonly-list",
 }
-
-afterEach(cleanup)
 
 it("単一選択", () => {
     const props = {

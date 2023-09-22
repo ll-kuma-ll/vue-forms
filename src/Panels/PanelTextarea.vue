@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
     disabled: false,
 })
 const emit = defineEmits<{
-    (e: 'update:modelValue', value: string): void
+    (e: 'update:modelValue', value: string | null): void
 }>()
 
 /** 入力値 */

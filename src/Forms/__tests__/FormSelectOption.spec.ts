@@ -1,5 +1,4 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue"
-import { afterEach, describe, expect, it } from "vitest"
 import FormSelectOptionVue from "../FormSelectOption.vue"
 
 const choices = [
@@ -7,8 +6,6 @@ const choices = [
     { value: 128, label: "ラベル128" },
 ]
 const testid = "form-select"
-
-afterEach(cleanup)
 
 describe("単一選択", () => {
     const props = {

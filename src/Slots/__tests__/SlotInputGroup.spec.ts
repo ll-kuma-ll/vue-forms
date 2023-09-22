@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/vue"
-import { expect, it } from "vitest"
 import SlotInputGroupVue from "../SlotInputGroup.vue"
 
 const slots = {

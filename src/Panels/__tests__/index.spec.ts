@@ -1,4 +1,3 @@
-import { expect, it } from "vitest"
 import * as index from ".."
 import PanelInputCheckVue from "../PanelInputCheck.vue"
 import PanelInputTextVue from "../PanelInputText.vue"

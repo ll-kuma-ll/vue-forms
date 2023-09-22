@@ -1,5 +1,5 @@
 {
-  "name": "vue-forms",
+  "name": "@ll-kuma-ll/vue-forms",
   "version": "1.0.0",
   "description": "Form components package for Vue.js",
   "main": "index.ts",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@testing-library/vue": "^7.0.0",
     "@vitejs/plugin-vue": "^4.3.1",
+    "@vue/tsconfig": "^0.4.0",
     "happy-dom": "^10.10.4",
     "typescript": "^5.1.6",
     "uuid": "^9.0.0",

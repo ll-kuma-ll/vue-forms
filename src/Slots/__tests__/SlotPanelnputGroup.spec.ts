@@ -1,5 +1,4 @@
 import { cleanup, render, screen } from "@testing-library/vue"
-import { afterEach, expect, it } from "vitest"
 import SlotPanelInputGroupVue from "../SlotPanelInputGroup.vue"
 
 const slots = {
@@ -19,8 +18,6 @@ const testid = {
     input: "slot-form-input",
     group: "input-group",
 }
-
-afterEach(cleanup)
 
 it(".input-group にスロット表示", () => {
     render(SlotPanelInputGroupVue, { slots, props })

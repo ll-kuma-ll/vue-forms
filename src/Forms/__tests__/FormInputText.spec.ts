@@ -1,8 +1,5 @@
-import { afterEach, expect, test } from "vitest"
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue"
 import FormInputTextVue from "../FormInputText.vue"
-
-afterEach(cleanup)
 
 const props = {
     modelValue: "test@example.com",

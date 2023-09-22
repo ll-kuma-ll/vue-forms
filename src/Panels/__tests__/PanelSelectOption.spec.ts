@@ -1,5 +1,4 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/vue"
-import { afterEach, describe, expect, it } from "vitest"
 import PanelSelectOptionVue from "../PanelSelectOption.vue"
 
 const choices = [
@@ -17,8 +16,6 @@ const attrClass = {
     invalid: "invalid-feedback",
     text: "form-text",
 }
-
-afterEach(cleanup)
 
 describe("標準(単一選択)", () => {
     const props = {

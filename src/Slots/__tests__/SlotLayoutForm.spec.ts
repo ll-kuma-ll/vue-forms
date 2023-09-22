@@ -1,8 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/vue"
-import { afterEach, describe, expect, test } from "vitest"
 import SlotFormVue from "../SlotLayoutForm.vue"
-
-afterEach(cleanup)
 
 const className = {
     required: 'form-mark-required',
