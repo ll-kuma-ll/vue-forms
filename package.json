@@ -2,7 +2,7 @@
   "name": "@ll-kuma-ll/vue-forms",
   "version": "1.0.0",
   "description": "Form components package for Vue.js",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "vitest"
   },
