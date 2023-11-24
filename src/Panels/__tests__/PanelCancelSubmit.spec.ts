@@ -71,12 +71,14 @@ describe("標準", () => {
     it('クリックイベント', async () => {
         const { getByTestId, emitted } = render(PanelCancelSubmitVue)
         const cancel = getByTestId(testid.cancel)
-        const submit = getByTestId(testid.submit)
+        const submit = getByTestId(testid.submit) as HTMLButtonElement
 
         await fireEvent.click(cancel)
         expect(emitted('cancel')).toBeTruthy()
 
+        expect(submit.disabled).toBe(false)
         await fireEvent.click(submit)
         expect(emitted('submit')).toBeTruthy()
+        expect(submit.disabled).toBe(true)
     })
 })

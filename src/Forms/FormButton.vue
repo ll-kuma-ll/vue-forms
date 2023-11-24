@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { providerIconKey } from '../keys'
 
 /*
@@ -37,10 +37,31 @@ const attrClassIcon = computed(() => [
     providerIcon,
     props.icon,
 ])
+const button = ref<HTMLButtonElement | null>(null)
+
+/**
+ * ボタン有効化
+ */
+function unDisable() {
+    if (!!button.value) {
+        button.value.disabled = false
+    }
+}
+
+/**
+ * ボタン無効化
+ */
+function disable() {
+    if (!!button.value) {
+        button.value.disabled = true
+    }
+}
+
+defineExpose({ unDisable, disable })
 </script>
 
 <template>
-    <button :type="type" :class="attrClassButton" :data-testid="testid" @click="$emit('click')">
+    <button ref="button" :type="type" :class="attrClassButton" :data-testid="testid" @click="$emit('click')">
         <i v-if="!!icon" :class="attrClassIcon"></i>{{ label }}
     </button>
 </template>
