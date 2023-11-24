@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
     plaintext: false,
 })
 const emit = defineEmits<{
-    (e: 'update:modelValue', value): void
+    (e: 'update:modelValue', value: string | number | string[] | number[] | null): void
 }>()
 
 /** 入力値 */

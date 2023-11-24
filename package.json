@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ll-kuma-ll/vue-forms#readme",
   "devDependencies": {
     "@testing-library/vue": "^7.0.0",
+    "@types/uuid": "^9.0.7",
     "@vitejs/plugin-vue": "^4.3.1",
     "@vue/tsconfig": "^0.4.0",
     "happy-dom": "^10.10.4",

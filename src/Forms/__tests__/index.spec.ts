@@ -1,9 +1,14 @@
 import * as index from "../"
+import FormButtonVue from "../FormButton.vue"
 import FormInputCheckVue from "../FormInputCheck.vue"
 import FormInputTextVue from "../FormInputText.vue"
 import FormTextareaVue from "../FormTextarea.vue"
 import FormSelectOptionVue from "../FormSelectOption.vue"
 import ReadonlyListVue from "../ReadonlyList.vue"
+
+it("FormButton", () => {
+    expect(index.FormButton).toEqual(FormButtonVue)
+})
 
 it("FormInputCheck", () => {
     expect(index.FormInputCheck).toEqual(FormInputCheckVue)

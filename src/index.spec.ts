@@ -4,6 +4,10 @@ import * as panels from "./Panels"
 import * as slots from "./Slots"
 
 describe("Forms", () => {
+    it("FormButton", () => {
+        expect(index.FormButton).toEqual(forms.FormButton)
+    })
+
     it("FormInputCheck", () => {
         expect(index.FormInputCheck).toEqual(forms.FormInputCheck)
     })
